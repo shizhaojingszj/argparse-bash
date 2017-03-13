@@ -40,8 +40,9 @@ for arg in [a for a in dir(args) if not a.startswith('_')]:
     if value is None:
         value = ''
     if isinstance(value, list):
-       print('{0}=( {1} );'.format(arg.upper(), " ".join(value)))
-    print('{0}="{1}";'.format(arg.upper(), value))
+        print('{0}=( {1} );'.format(arg.lower(), " ".join(value)))
+    else:
+        print('{0}="{1}";'.format(arg.lower(), value))
 EOF
 
     # Define variables corresponding to the options if the args can be
@@ -70,7 +71,7 @@ parser.add_argument('-o', '--outfile')
 
 EOF
 
-echo "INFILE: \${INFILE}"
-echo "OUTFILE: \${OUTFILE}"
+echo "INFILE: \${infile}"
+echo "OUTFILE: \${outfile}"
 FOO
 fi
