@@ -39,6 +39,8 @@ for arg in [a for a in dir(args) if not a.startswith('_')]:
     value = getattr(args, arg, None)
     if value is None:
         value = ''
+    if isinstance(value, list):
+       print('{0}=( {1} );'.format(arg.upper(), " ".join(value)))
     print('{0}="{1}";'.format(arg.upper(), value))
 EOF
 
