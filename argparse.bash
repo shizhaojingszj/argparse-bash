@@ -25,7 +25,7 @@ class MyArgumentParser(argparse.ArgumentParser):
     def print_help(self, file=None):
         """Print help and exit with error"""
         super(MyArgumentParser, self).print_help(file=file)
-        sys.exit(0)
+        sys.exit(1)             # this one must be 1 to assure '-h' to exit
 
 parser = MyArgumentParser(prog=os.path.basename("$0"))
 EOF
