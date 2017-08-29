@@ -34,7 +34,7 @@ EOF
     cat >> "$argparser"
 
     cat >> "$argparser" <<EOF
-args = parser.parse_args()
+args, unknown_args = parser.parse_known_args()
 for arg in [a for a in dir(args) if not a.startswith('_')]:
     value = getattr(args, arg, None)
     if value is None:
@@ -43,6 +43,8 @@ for arg in [a for a in dir(args) if not a.startswith('_')]:
         print('{0}=( {1} );'.format(arg.lower(), " ".join(value)))
     else:
         print('{0}="{1}";'.format(arg.lower(), value))
+# unknown_args
+print('{0}="{1}"'.format("unknown_args", " ".join(unknown_args)))
 EOF
 
     # Define variables corresponding to the options if the args can be
